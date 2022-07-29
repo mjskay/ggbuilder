@@ -1,5 +1,5 @@
 Package: ggbuilder
-Title: An alternative way to build ggplot2 layers
+Title: A Data Flow Pipeline Approach to Building ggplot2 Layers
 Version: 0.0.0.9000
 Authors@R: 
     person("Matthew", "Kay", , "mjskay@northwestern.edu", role = c("aut", "cre"))
@@ -16,6 +16,7 @@ Suggests:
   tidyr,
   generics,
   vdiffr,
+  scales,
   testthat (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8

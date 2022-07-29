@@ -43,7 +43,7 @@ test_that("layer construction works", {
         dplyr::group_by(condition) |>
         dplyr::slice_max(response_time) |>
         geom_("label", aes(label = response_time), size = 5, show.legend = FALSE) |>
-        remap(aes(fill = colorspace::lighten(color, .9)))
+        remap(aes(fill = scales::alpha(color, .1)))
   )
 
 })
