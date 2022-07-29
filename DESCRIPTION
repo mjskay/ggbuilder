@@ -1,18 +1,24 @@
 Package: ggbuilder
-Title: An altnernative way to build ggplot2 layers
+Title: An alternative way to build ggplot2 layers
 Version: 0.0.0.9000
 Authors@R: 
     person("Matthew", "Kay", , "mjskay@northwestern.edu", role = c("aut", "cre"))
 Description: An (experimental) alternative way to build ggplot2 layers, where elements
     of the layer, such as data, mappings, statistical transformations, and geometries
     are specified in the order their data is processed.
+Depends:
+  R (>= 4.1)
 Imports:
   ggplot2,
   rlang
+Suggests:
+  dplyr,
+  tidyr,
+  generics,
+  vdiffr,
+  testthat (>= 3.0.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-Suggests: 
-    testthat (>= 3.0.0)
 Config/testthat/edition: 3

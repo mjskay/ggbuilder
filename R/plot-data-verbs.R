@@ -25,134 +25,112 @@ plot_data_sequence.function = function(data, fun, ...) {
 
 # dplyr verbs -------------------------------------------------------------
 
-#' @importFrom dplyr arrange
-#' @export
+#' @exportS3Method dplyr::arrange
 arrange.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::arrange, ...)
 }
 
-#' @importFrom dplyr count
-#' @export
+#' @exportS3Method dplyr::count
 count.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, dplyr::count, ...)
 }
 
-#' @importFrom dplyr distinct
-#' @export
+#' @exportS3Method dplyr::distinct
 distinct.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::distinct, ...)
 }
 
-#' @importFrom dplyr do
-#' @export
+#' @exportS3Method dplyr::do
 do.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::do, ...)
 }
 
-#' @importFrom dplyr filter
-#' @export
+#' @exportS3Method dplyr::filter
 filter.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::filter, ...)
 }
 
-#' @importFrom dplyr group_by
-#' @export
+#' @exportS3Method dplyr::group_by
 group_by.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::group_by, ...)
 }
 
-#' @importFrom dplyr inner_join
-#' @export
+#' @exportS3Method dplyr::inner_join
 inner_join.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, dplyr::inner_join, ...)
 }
 
-#' @importFrom dplyr left_join
-#' @export
+#' @exportS3Method dplyr::left_join
 left_join.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, dplyr::left_join, ...)
 }
 
-#' @importFrom dplyr right_join
-#' @export
+#' @exportS3Method dplyr::right_join
 right_join.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, dplyr::right_join, ...)
 }
 
-#' @importFrom dplyr full_join
-#' @export
+#' @exportS3Method dplyr::full_join
 full_join.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, dplyr::full_join, ...)
 }
 
-#' @importFrom dplyr mutate
-#' @export
+#' @exportS3Method dplyr::mutate
 mutate.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::mutate, ...)
 }
 
-#' @importFrom dplyr transmute
-#' @export
+#' @exportS3Method dplyr::transmute
 transmute.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::transmute, ...)
 }
 
-#' @importFrom dplyr pull
-#' @export
+#' @exportS3Method dplyr::pull
 pull.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::pull, ...)
 }
 
-#' @importFrom dplyr select
-#' @export
+#' @exportS3Method dplyr::select
 select.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::select, ...)
 }
 
-#' @importFrom dplyr slice
-#' @export
+#' @exportS3Method dplyr::slice
 slice.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::slice, ...)
 }
 
-#' @importFrom dplyr slice_head
-#' @export
+#' @exportS3Method dplyr::slice_head
 slice_head.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::slice_head, ...)
 }
 
-#' @importFrom dplyr slice_tail
-#' @export
+#' @exportS3Method dplyr::slice_tail
 slice_tail.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::slice_tail, ...)
 }
 
-#' @importFrom dplyr slice_sample
-#' @export
+#' @exportS3Method dplyr::slice_sample
 slice_sample.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::slice_sample, ...)
 }
 
-#' @importFrom dplyr slice_min
-#' @export
+#' @exportS3Method dplyr::slice_min
 slice_min.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::slice_min, ...)
 }
 
-#' @importFrom dplyr slice_max
-#' @export
+#' @exportS3Method dplyr::slice_max
 slice_max.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::slice_max, ...)
 }
 
-#' @importFrom dplyr summarise
-#' @export
+#' @exportS3Method dplyr::summarise
 summarise.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::summarise, ...)
 }
 
-#' @importFrom dplyr summarize
-#' @export
+#' @exportS3Method dplyr::summarize
 summarize.ggbuilder_plot_data = function(.data, ...) {
   plot_data_sequence(.data$data, dplyr::summarize, ...)
 }
@@ -160,20 +138,17 @@ summarize.ggbuilder_plot_data = function(.data, ...) {
 
 # generics verbs ----------------------------------------------------------
 
-#' @importFrom generics intersect
-#' @export
+#' @exportS3Method generics::intersect
 intersect.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, generics::intersect, ...)
 }
 
-#' @importFrom generics union
-#' @export
+#' @exportS3Method generics::union
 union.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, generics::union, ...)
 }
 
-#' @importFrom generics setdiff
-#' @export
+#' @exportS3Method generics::setdiff
 setdiff.ggbuilder_plot_data = function(x, ...) {
   plot_data_sequence(x$data, generics::setdiff, ...)
 }
@@ -181,26 +156,22 @@ setdiff.ggbuilder_plot_data = function(x, ...) {
 
 # tidyr verbs -------------------------------------------------------------
 
-#' @importFrom tidyr expand
-#' @export
+#' @exportS3Method tidyr::expand
 expand.ggbuilder_plot_data = function(data, ...) {
   plot_data_sequence(data$data, tidyr::expand, ...)
 }
 
-#' @importFrom tidyr fill
-#' @export
+#' @exportS3Method tidyr::fill
 fill.ggbuilder_plot_data = function(data, ...) {
   plot_data_sequence(data$data, tidyr::fill, ...)
 }
 
-#' @importFrom tidyr pivot_longer
-#' @export
+#' @exportS3Method tidyr::pivot_longer
 pivot_longer.ggbuilder_plot_data = function(data, ...) {
   plot_data_sequence(data$data, tidyr::pivot_longer, ...)
 }
 
-#' @importFrom tidyr pivot_wider
-#' @export
+#' @exportS3Method tidyr::pivot_wider
 pivot_wider.ggbuilder_plot_data = function(data, ...) {
   plot_data_sequence(data$data, tidyr::pivot_wider, ...)
 }

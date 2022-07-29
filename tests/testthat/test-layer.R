@@ -1,103 +1,49 @@
-test_that("layer_spec construction works", {
-  df = data.frame(response_time = 1:30, condition = c("A", "B", "C"))
+test_that("layer construction works", {
+  skip_if_not_installed("vdiffr")
 
-  ls = layer_spec(
-    data_(\(x) filter(x, condition == "b")),
-    stat_("boxplot", aes(x = condition, y = value)),
-    geom_("label", aes(y = ymax, label = ymax), size = 5)
+  df = data.frame(response_time = 1:30, condition = c("A", "B", "C"))
+  p = ggplot(df)
+
+  vdiffr::expect_doppelganger("single geom",
+    p + geom_("point", aes(x = condition, y = response_time), size = 3)
   )
 
-  df |>
-    ggplot(aes(x = condition, y = response_time)) +
-    geom_("point")
 
-  df |>
-    ggplot() +
-    geom_("point", aes(x = condition, y = response_time))
+  vdiffr::expect_doppelganger("single stat and geom",
+    p + stat_("identity", aes(x = condition, y = response_time)) |>
+      geom_("point", size = 3)
+  )
 
-  df |>
-    ggplot() +
-    stat_("identity", aes(x = condition, y = response_time)) |>
-      geom_("point")
-
-  df |>
-    ggplot(aes(x = condition, y = response_time)) +
-    stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-      geom_("boxplot") +
-    stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-      geom_("label", aes(y = ymax, label = ymax), size = 5, data = . %>% filter(condition == "B"))
-
-  df |>
-    ggplot(aes(x = condition, y = response_time)) +
-    plot_data() |>
+  vdiffr::expect_doppelganger("plot_data() with a function",
+    p +
+      geom_boxplot(aes(x = condition, y = response_time, color = condition)) +
+      plot_data(\(x) x[x$condition %in% c("B", "C"),]) |>
       stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-      geom_("boxplot") +
-    plot_data(. %>% dplyr::filter(condition %in% c("B", "C"))) |>
-      stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-      geom_("label", aes(y = ymax, label = ymax), size = 5, show.legend = FALSE) |>
-      remap(aes(fill = colorspace::lighten(color, .9)))
+      geom_("label", aes(y = ymax, label = ymax), size = 5)
+  )
 
 
-  df |>
-    ggplot() +
-    geom_boxplot(aes(x = condition, y = response_time, color = condition)) +
-    plot_data() |>
-      filter(condition %in% c("B", "C")) |>
-      stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-      geom_("label", aes(y = ymax, label = ymax), size = 5) |>
-      remap(aes(fill = colorspace::lighten(color, .9))) +
-    theme_light()
+  skip_if_not_installed("dplyr")
 
-  df |>
-    ggplot(aes(x = condition, y = response_time, color = condition)) +
-    stat_("boxplot") +
-    plot_data() |>
-      filter(condition %in% c("B", "C")) |>
-      group_by(condition) |>
-      slice_max(response_time) |>
-      geom_("label", aes(label = response_time), size = 5, show.legend = FALSE) |>
-      remap(aes(fill = colorspace::lighten(color, .9)))
+  vdiffr::expect_doppelganger("plot_data() with a verb",
+    p +
+      geom_boxplot(aes(x = condition, y = response_time, color = condition)) +
+      plot_data() |>
+        dplyr::filter(condition %in% c("B", "C")) |>
+        stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
+        geom_("label", aes(y = ymax, label = ymax), size = 5)
+  )
 
+  vdiffr::expect_doppelganger("plot_data() with several verbs and remap()",
+    df |>
+      ggplot(aes(x = condition, y = response_time, color = condition)) +
+      stat_("boxplot") +
+      plot_data() |>
+        dplyr::filter(condition %in% c("B", "C")) |>
+        dplyr::group_by(condition) |>
+        dplyr::slice_max(response_time) |>
+        geom_("label", aes(label = response_time), size = 5, show.legend = FALSE) |>
+        remap(aes(fill = colorspace::lighten(color, .9)))
+  )
 
-  df |>
-    ggplot() +
-    stat_boxplot(aes(x = condition, y = response_time, fill = condition)) +
-    layer_(
-      data_(~ dplyr::filter(.x, condition == "A")),
-      stat_("boxplot", aes(x = condition, y = response_time, color = condition)),
-      geom_("label", aes(y = ymax, label = ymax), size = 5),
-      rescale_(aes(fill = alpha(color, 0.1)))
-    )
-
-  df |>
-    ggplot() +
-    geom_boxplot(aes(x = condition, y = response_time, color = condition)) +
-    geom_label(
-      aes(
-        x = condition,
-        y = stage(start = response_time, after_stat = ymax),
-        label = after_stat(ymax),
-        color = condition,
-        fill = after_scale(colorspace::lighten(color, .9))
-      ),
-      stat = "boxplot", size = 5,
-      data = . %>% filter(condition %in% c("B", "C"))
-    ) +
-    theme_light()
-
-
-  data_(~ dplyr::filter(.x, condition == "A")) |>
-    stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-    geom_("label", aes(y = ymax, label = ymax), size = 5) |>
-    rescale_(aes(fill = alpha(color, 0.1)))
-
-
-  plot_data() |>
-    filter(condition == "A") |>
-    stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
-    geom_("label", aes(y = ymax, label = ymax), size = 5) |>
-    rescale(aes(fill = alpha(color, 0.1)))
-
-  statistic(aes(x = condition, y = response_time, color = condition)) |>
-    geometry(label, aes(y = ymax, label = ymax), size = 5)
 })
