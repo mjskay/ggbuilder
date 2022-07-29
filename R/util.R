@@ -6,3 +6,7 @@ defaults = function(x, defaults) {
 stop0 = function(...) {
   stop(..., call. = FALSE)
 }
+
+cat0 = function(...) {
+  cat(..., sep = "")
+}

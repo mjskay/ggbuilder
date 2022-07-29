@@ -1,5 +1,6 @@
 new_layer_spec = function() {
   structure(list(
+    data = NULL,
     params = list(),
     mapping_stat = aes(),
     mapping_geom = aes(),
@@ -11,10 +12,8 @@ new_layer_spec = function() {
 # printing ----------------------------------------------------------------
 
 #' @export
-print.ggbuilder_layer = function(x, ...) {
-  cat0("<ggbuilder::layer>:\n")
-  NextMethod()
-  cat0("\nfrom ")
-  print(attr(x, "ggbuilder_layer_spec"), ...)
+print.ggbuilder_layer_spec = function(x, ...) {
+  cat0("<ggbuilder::layer_spec>:\n")
+  print(unclass(x), ...)
   invisible(x)
 }
