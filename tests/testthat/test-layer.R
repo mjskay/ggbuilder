@@ -39,11 +39,11 @@ test_that("layer_spec construction works", {
 
 
   df |>
-    ggplot(aes(x = condition, y = response_time, color = condition)) +
-    geom_boxplot() +
+    ggplot() +
+    geom_boxplot(aes(x = condition, y = response_time, color = condition)) +
     plot_data() |>
       filter(condition %in% c("B", "C")) |>
-      stat_("boxplot", aes(x = condition, y = response_time)) |>
+      stat_("boxplot", aes(x = condition, y = response_time, color = condition)) |>
       geom_("label", aes(y = ymax, label = ymax), size = 5) |>
       remap(aes(fill = colorspace::lighten(color, .9))) +
     theme_light()
@@ -71,17 +71,19 @@ test_that("layer_spec construction works", {
 
   df |>
     ggplot() +
-    stat_boxplot(aes(x = condition, y = response_time, fill = condition)) +
+    geom_boxplot(aes(x = condition, y = response_time, color = condition)) +
     geom_label(
-      aes(x = condition,
+      aes(
+        x = condition,
         y = stage(start = response_time, after_stat = ymax),
         label = after_stat(ymax),
-        colour = condition,
-        fill = after_scale(alpha(color, 0.1))
-        ),
+        color = condition,
+        fill = after_scale(colorspace::lighten(color, .9))
+      ),
       stat = "boxplot", size = 5,
-      data = . %>% dplyr::filter(condition == "B")
-    )
+      data = . %>% filter(condition %in% c("B", "C"))
+    ) +
+    theme_light()
 
 
   data_(~ dplyr::filter(.x, condition == "A")) |>
