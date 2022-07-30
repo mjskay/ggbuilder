@@ -8,7 +8,7 @@
 new_layer_spec()
 }
 \value{
-A \pkg{ggbuilder} \link{layer_spec} representing a layer to be constructed by \code{\link[=new_layer]{new_layer()}}.
+A ggbuilder \link{layer_spec} representing a layer to be constructed by \code{\link[=new_layer]{new_layer()}}.
 }
 \description{
 A specification for a \link[ggplot2:layer]{ggplot2::layer} built from a \link{layer_spec} and intended for

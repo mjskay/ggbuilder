@@ -16,14 +16,25 @@ used to create this stat.
 \item{...}{arguments passed on to the stat's constructor.}
 }
 \value{
-A \pkg{ggbuilder} \link{layer}, which is also a \link[ggplot2:layer]{ggplot2::layer}, and which can be
-added to a \code{\link[=ggplot]{ggplot()}} object or piped into other \pkg{ggbuilder} functions.
+A ggbuilder \link{layer}, which is also a \link[ggplot2:layer]{ggplot2::layer}, and which can be
+added to a \code{\link[=ggplot]{ggplot()}} object or piped into other ggbuilder functions.
 }
 \description{
 A \link[ggplot2:aes_eval]{ggplot2::stat} intended for piping.
 }
-\examples{
+\details{
+\code{stat_()} can be used to replace typical \code{stat_XXX()} calls in \pkg{ggplot2}
+code to make them pipable by using the \code{XXX} suffix as a string as the first
+argument to \code{stat_()}.
 
+For example, \code{stat_boxplot(...)} would become \code{stat_("boxplot", ...)}.
+The primary difference between the former and the latter is that the latter
+is both a \link[ggplot2:layer]{ggplot2::layer} \emph{and} a ggbuilder \link{layer} containing a \link{layer_spec}.
+The contained \link{layer_spec} stores information on how to construct the
+stat, which allows it to be combined with other objects (e.g. by piping it
+into \code{geom_()}) to construct more complex layers. See \emph{Examples}.
+}
+\examples{
 library(ggplot2)
 
 set.seed(123456)

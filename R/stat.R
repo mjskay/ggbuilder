@@ -10,13 +10,23 @@
 #'     used to create this stat.
 #' @param ... arguments passed on to the stat's constructor.
 #'
-#' @returns
+#' @details
+#' `stat_()` can be used to replace typical `stat_XXX()` calls in \pkg{ggplot2}
+#' code to make them pipable by using the `XXX` suffix as a string as the first
+#' argument to `stat_()`.
 #'
-#' A \pkg{ggbuilder} [layer], which is also a [ggplot2::layer], and which can be
-#' added to a [ggplot()] object or piped into other \pkg{ggbuilder} functions.
+#' For example, `stat_boxplot(...)` would become `stat_("boxplot", ...)`.
+#' The primary difference between the former and the latter is that the latter
+#' is both a [ggplot2::layer] *and* a ggbuilder [layer] containing a [layer_spec].
+#' The contained [layer_spec] stores information on how to construct the
+#' stat, which allows it to be combined with other objects (e.g. by piping it
+#' into `geom_()`) to construct more complex layers. See *Examples*.
+#'
+#' @returns
+#' A ggbuilder [layer], which is also a [ggplot2::layer], and which can be
+#' added to a [ggplot()] object or piped into other ggbuilder functions.
 #'
 #' @examples
-#'
 #' library(ggplot2)
 #'
 #' set.seed(123456)

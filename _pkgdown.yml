@@ -2,3 +2,22 @@ url: https://mjskay.github.io/ggbuilder/
 template:
   bootstrap: 5
 
+reference:
+- title: Package overview
+  desc:  Overview of ggbuilder
+  contents:
+  - ggbuilder-package
+
+- title: Pipable layer construction functions
+  desc:  Composable functions for constructing ggplot2 layers using a data-flow approach
+  contents:
+  - geom_
+  - stat_
+  - plot_data
+  - remap
+
+- title: Low-level layer constructors
+  desc:  Low-level functions for constructing layers and layer specifications (typically not used directly)
+  contents:
+  - new_layer
+  - new_layer_spec

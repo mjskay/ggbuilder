@@ -11,7 +11,7 @@
 #'
 #' @returns
 #'
-#' A \pkg{ggbuilder} [plot_data], which can be piped into other \pkg{ggbuilder}
+#' A ggbuilder [plot_data], which can be piped into other ggbuilder
 #' functions. Can also be piped into \pkg{dplyr} and \pkg{tidyr} verbs in order
 #' to construct a new [plot_data] that will apply those verbs to the data.
 #'
@@ -40,7 +40,6 @@
 #'
 #' @import ggplot2
 #' @importFrom rlang expr
-#' @name geom_
 #' @export
 plot_data = function(data = NULL) {
   structure(list(data = data), class = "ggbuilder_plot_data")

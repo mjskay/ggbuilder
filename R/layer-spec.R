@@ -5,7 +5,7 @@
 #'
 #' @returns
 #'
-#' A \pkg{ggbuilder} [layer_spec] representing a layer to be constructed by [new_layer()].
+#' A ggbuilder [layer_spec] representing a layer to be constructed by [new_layer()].
 #'
 #' @examples
 #'

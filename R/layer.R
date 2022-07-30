@@ -9,8 +9,8 @@
 #'
 #' @returns
 #'
-#' A \pkg{ggbuilder} [layer], which is also a [ggplot2::layer], and which can be
-#' added to a [ggplot()] object or piped into other \pkg{ggbuilder} functions.
+#' A ggbuilder [layer], which is also a [ggplot2::layer], and which can be
+#' added to a [ggplot()] object or piped into other ggbuilder functions.
 #'
 #' @examples
 #'

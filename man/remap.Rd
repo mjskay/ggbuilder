@@ -22,7 +22,7 @@ remap(x, mapping)
 \item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or \code{\link[=aes_]{aes_()}}.}
 }
 \value{
-A \pkg{ggbuilder} \link{layer} with aesthetics provided in \code{mapping} applied after
+A ggbuilder \link{layer} with aesthetics provided in \code{mapping} applied after
 scales are computed, using \code{\link[ggplot2:aes_eval]{ggplot2::after_scale()}}
 }
 \description{

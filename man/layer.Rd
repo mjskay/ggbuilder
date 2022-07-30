@@ -21,8 +21,8 @@ new_layer(x)
 }}
 }
 \value{
-A \pkg{ggbuilder} \link{layer}, which is also a \link[ggplot2:layer]{ggplot2::layer}, and which can be
-added to a \code{\link[=ggplot]{ggplot()}} object or piped into other \pkg{ggbuilder} functions.
+A ggbuilder \link{layer}, which is also a \link[ggplot2:layer]{ggplot2::layer}, and which can be
+added to a \code{\link[=ggplot]{ggplot()}} object or piped into other ggbuilder functions.
 }
 \description{
 A \link[ggplot2:layer]{ggplot2::layer} built from a \link{layer_spec} and intended for

@@ -10,13 +10,23 @@
 #'     used to create this geom.
 #' @param ... arguments passed on to the geom's constructor.
 #'
-#' @returns
+#' @details
+#' `geom_()` can be used to replace typical `geom_XXX()` calls in \pkg{ggplot2}
+#' code to make them pipable by using the `XXX` suffix as a string as the first
+#' argument to `geom_()`.
 #'
-#' A \pkg{ggbuilder} [layer], which is also a [ggplot2::layer], and which can be
-#' added to a [ggplot()] object or piped into other \pkg{ggbuilder} functions.
+#' For example, `geom_boxplot(...)` would become `geom_("boxplot", ...)`.
+#' The primary difference between the former and the latter is that the latter
+#' is both a [ggplot2::layer] *and* a ggbuilder [layer] containing a [layer_spec].
+#' The contained [layer_spec] stores information on how to construct the
+#' geom, which allows it to be combined with other objects (e.g. by piping it
+#' into `remap()`) to construct more complex layers. See *Examples*.
+#'
+#' @returns
+#' A ggbuilder [layer], which is also a [ggplot2::layer], and which can be
+#' added to a [ggplot()] object or piped into other ggbuilder functions.
 #'
 #' @examples
-#'
 #' library(ggplot2)
 #'
 #' set.seed(123456)

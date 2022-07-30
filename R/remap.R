@@ -9,7 +9,7 @@
 #' @param mapping Set of aesthetic mappings created by [aes()] or [aes_()].
 #'
 #' @returns
-#' A \pkg{ggbuilder} [layer] with aesthetics provided in `mapping` applied after
+#' A ggbuilder [layer] with aesthetics provided in `mapping` applied after
 #' scales are computed, using [ggplot2::after_scale()]
 #'
 #' @examples
